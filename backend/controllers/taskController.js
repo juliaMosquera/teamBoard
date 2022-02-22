@@ -46,7 +46,7 @@ const listTask = async (req, res) => {
     if(!req.params["_id"]) 
     return res.status(400).send({ message: "Incomplete data"})
   
-    const tasks = await task.findByIdAndDelete(req.params["_id"], {taskStatus: false,})
+    const tasks = await task.findByIdAndDelete(req.params["_id"])
   
     return !tasks
     ? res.status(400).send({message: "Error deleting task"})
