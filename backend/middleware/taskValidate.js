@@ -1,6 +1,6 @@
 import task from "../models/task.js";
 
-const idUser = async (req, res, next) =>{
+const existingTask = async (req, res, next) =>{
     const userId = await task.findOne({name: "task"})
     if(!userId) return res.status(500).send({message: "No user was assigned"})
 
@@ -8,4 +8,4 @@ const idUser = async (req, res, next) =>{
     next();
 }
 
-export default { idUser }
+export default { existingTask }

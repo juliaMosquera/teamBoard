@@ -42,17 +42,17 @@ const listTask = async (req, res) => {
     return res.status(200).send({ tasks })
   }
 
-  const deleteTask = async (req, res) => {
-    if(!req.params["_id"]) 
+const deleteTask = async (req, res) => {
+    if(!req.params["_id"])
     return res.status(400).send({ message: "Incomplete data"})
-  
+
     const tasks = await task.findByIdAndDelete(req.params["_id"])
-  
+
     return !tasks
     ? res.status(400).send({message: "Error deleting task"})
     : res.status(200).send({ message: "Task deleted"})
-  };
-  
+};
+
   const updateTask = async (req, res) => {
     if(!req.body._id || !req.body.imageUrl || !req.body.description)
     return res.status(400).send({message: "Incomplete data"})
