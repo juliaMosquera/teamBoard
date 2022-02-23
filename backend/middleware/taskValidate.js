@@ -1,6 +1,6 @@
 import user from "../models/user.js";
 
-const existingIdUser = async (req,res,next) => {
+const idUser = async (req,res,next) => {
     const userId = await user.findOne({name: "Juanito jaramillo"})
     if(!userId) return res.status(500).send({message: "No user was assigned"})
 
@@ -8,4 +8,4 @@ const existingIdUser = async (req,res,next) => {
     next();
 }
 
-export default { existingIdUser }
+export default { idUser }

@@ -6,7 +6,7 @@ import taskMidd from "../middleware/taskValidate.js";
 const router = express.Router();
 
 router.post("/registerTask",
-taskMidd.existingIdUser,
+taskMidd.idUser,
 taskController.registerTask);
 
 router.get("/listTask/:name?", taskController.listTask)
