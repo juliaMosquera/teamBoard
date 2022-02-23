@@ -11,6 +11,7 @@ let taskSchema = new task({
     description: req.body.description,
     imageUrl: "vacio",
     taskStatus: req.body.taskStatus,
+    user: req.body.user
   });
 
   const result = await taskSchema.save();
@@ -21,6 +22,7 @@ let taskSchema = new task({
     return res.status(200).json({
         token: jwt.sign({
             _id: result._id,
+            user: result.user,
             name: result.name,
             description: result.description,
             iat: moment().unix()
