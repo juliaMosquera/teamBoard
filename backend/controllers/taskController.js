@@ -34,12 +34,15 @@ let taskSchema = new task({
 
 };
 
-const listTask = async (req, res) => {
-    let tasks = await task.find();
+const listTask = async (req, res)=>{
+    let tasks = await task.find({name: new RegExp(req.params["name"])})
+    .populate("name")
+    .exec();
+  
     if(tasks.length === 0)
     return res.status(400).send({ message: "No search results"})
+    return res.status(200).send({tasks})
   
-    return res.status(200).send({ tasks })
   }
 
 const deleteTask = async (req, res) => {
